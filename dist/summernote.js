@@ -6,7 +6,7 @@
  * Copyright 2013 Alan Hong. and outher contributors
  * summernote may be freely distributed under the MIT license./
  *
- * Date: 2014-05-21T04:46Z
+ * Date: 2014-05-28T04:02Z
  */
 (function (factory) {
   /* global define */
@@ -691,7 +691,7 @@
       minHeight: null,              // set minimum height of editor
       maxHeight: null,              // set maximum height of editor
 
-      focus: false,                 // set focus after initilize summernote
+      focus: false,                 // set focus to editable area after initializing summernote
 
       tabsize: 4,                   // size of tab ex) 2 or 4
       styleWithSpan: true,          // style with span (Chrome and FF only)
@@ -754,7 +754,7 @@
 
       // fontName
       fontNames: [
-        'Serif', 'Sans', 'Arial', 'Arial Black', 'Courier',
+        '宋体', '黑体', 'Serif', 'Sans', 'Arial', 'Arial Black', 'Courier',
         'Courier New', 'Comic Sans MS', 'Helvetica', 'Impact', 'Lucida Grande',
         'Lucida Sans', 'Tahoma', 'Times', 'Times New Roman', 'Verdana'
       ],
@@ -850,6 +850,9 @@
     // default language: en-US
     lang: {
       'en-US': {
+        media: {
+          attachment: 'attachment'
+        },
         font: {
           bold: 'Bold',
           italic: 'Italic',
@@ -1495,7 +1498,7 @@
      */
     this.currentStyle = function (elTarget) {
       var rng = range.create();
-      return rng.isOnEditable() && style.current(rng, elTarget);
+      return rng && rng.isOnEditable() && style.current(rng, elTarget);
     };
 
     /**
@@ -2701,6 +2704,9 @@
           toggleFullscreen(oLayoutInfo);
         } else if (sEvent === 'codeview') {
           toggleCodeView(oLayoutInfo);
+        } else {
+          console.log('trigger unknown event ' + sEvent + ' on doc elmnt');
+          $editable.trigger(sEvent, [editor, $editable]);
         }
 
         hToolbarAndPopoverUpdate(event);
@@ -3081,6 +3087,24 @@
     };
 
     var tplButtonInfo = {
+      insertImage: function (lang) {
+        return tplIconButton('fa fa-picture-o icon-picture', {
+          event: 'yzInsertImage',
+          title: lang.image.image
+        });
+      },
+      insertVideo: function (lang) {
+        return tplIconButton('fa fa-youtube-play icon-picture', {
+          event: 'yzInsertVideo',
+          title: lang.video.video
+        });
+      },
+      insertFile: function (lang) {
+        return tplIconButton('fa fa-file icon-picture', {
+          event: 'yzInsertFile',
+          title: lang.media.attachment
+        });
+      },
       picture: function (lang) {
         return tplIconButton('fa fa-picture-o icon-picture', {
           event: 'showImageDialog',

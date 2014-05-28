@@ -1,6 +1,9 @@
 (function ($) {
   $.extend($.summernote.lang, {
     'zh-CN': {
+      media: {
+        attachment: '附件'
+      },
       font: {
         bold: '粗体',
         italic: '斜体',

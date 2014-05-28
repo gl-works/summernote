@@ -76,7 +76,7 @@ define('summernote/settings', function () {
 
       // fontName
       fontNames: [
-        'Serif', 'Sans', 'Arial', 'Arial Black', 'Courier',
+        '宋体', '黑体', 'Serif', 'Sans', 'Arial', 'Arial Black', 'Courier',
         'Courier New', 'Comic Sans MS', 'Helvetica', 'Impact', 'Lucida Grande',
         'Lucida Sans', 'Tahoma', 'Times', 'Times New Roman', 'Verdana'
       ],
@@ -172,6 +172,9 @@ define('summernote/settings', function () {
     // default language: en-US
     lang: {
       'en-US': {
+        media: {
+          attachment: 'attachment'
+        },
         font: {
           bold: 'Bold',
           italic: 'Italic',

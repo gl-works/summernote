@@ -336,6 +336,8 @@ define([
           toggleFullscreen(oLayoutInfo);
         } else if (sEvent === 'codeview') {
           toggleCodeView(oLayoutInfo);
+        } else {
+          $editable.trigger(sEvent, [editor, $editable]);
         }
 
         hToolbarAndPopoverUpdate(event);

@@ -103,6 +103,24 @@ define([
     };
 
     var tplButtonInfo = {
+      insertImage: function (lang) {
+        return tplIconButton('fa fa-picture-o icon-picture', {
+          event: 'yzInsertImage',
+          title: lang.image.image
+        });
+      },
+      insertVideo: function (lang) {
+        return tplIconButton('fa fa-youtube-play icon-picture', {
+          event: 'yzInsertVideo',
+          title: lang.video.video
+        });
+      },
+      insertFile: function (lang) {
+        return tplIconButton('fa fa-file icon-picture', {
+          event: 'yzInsertFile',
+          title: lang.media.attachment
+        });
+      },
       picture: function (lang) {
         return tplIconButton('fa fa-picture-o icon-picture', {
           event: 'showImageDialog',
